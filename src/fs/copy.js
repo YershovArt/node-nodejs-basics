@@ -6,8 +6,7 @@ const copy = async () => {
     const destination = 'files_copy';
     try {
         await fs.stat(source);
-        await fs.access(destination);
-        throw new Error('EXIST')
+            
     } catch (error) {
         if (error.syscall === 'access') {
             await fs.cp(source, destination, { recursive: true });
