@@ -18,7 +18,7 @@ const rename = async () => {
             console.log('wrongFilename.txt renamed properFilename.txt');
         } else if (error.message === 'EXIST') {
             throw new Error('FS operation failed, properFilename.txt exist');
-        } 
+        }
     }
 
 };
