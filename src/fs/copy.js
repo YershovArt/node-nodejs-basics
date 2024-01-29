@@ -2,9 +2,8 @@ import fs from 'node:fs/promises';
 import path from 'path'
 // copy.js - implement function that copies folder files files with all its content into folder files_copy at the same level (if files folder doesn't exists or files_copy has already been created Error with message FS operation failed must be thrown)
 const copy = async () => {
-    // Write your code here 
-   
-   
+    // Write your code here
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //    experimental
     // const source = './files';
     // const destination = 'files_copy';
@@ -14,7 +13,7 @@ const copy = async () => {
     // } catch {
     //     throw new Error("FS operation failed");
     // }
-
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     // first try
 
     // try {
@@ -30,9 +29,6 @@ const copy = async () => {
     //         throw new Error('FS operation failed, source folder doesn`t exist');
     //     }
     // }
-
-
-
 };
 
 await copy();

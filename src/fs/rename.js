@@ -11,7 +11,7 @@ const rename = async () => {
     try {
         await fs.stat(wrongName);
         await fs.access(properName);
-        throw new Error('EXIST')
+        throw new Error('EXIST');
     } catch (error) {
         if (error.syscall === 'access') {
             await fs.rename(wrongName, properName);
