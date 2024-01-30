@@ -6,7 +6,7 @@ import { stat } from 'node:fs';
 const rename = async () => {
     // Write your code here
     const wrongName = './files/wrongFilename.txt';
-    const properName = './files/properFilename.txt';
+    const properName = './files/properFilename.md';
     await fs.rename(wrongName, properName);
     try {
         await fs.stat(wrongName);
@@ -15,9 +15,11 @@ const rename = async () => {
     } catch (error) {
         if (error.syscall === 'access') {
             await fs.rename(wrongName, properName);
-            console.log('wrongFilename.txt renamed properFilename.txt');
+            console.log('wrongFilename.txt renamed properFilename.md');
         } else if (error.message === 'EXIST') {
             throw new Error('FS operation failed, properFilename.txt exist');
+        } else {
+            throw new Error('FS operation failed, wrongFilename.txt doesn`t exist');
         }
     }
 
