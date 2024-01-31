@@ -3,6 +3,7 @@ import { release, version } from 'os';
 import { createServer as createServerHttp } from 'http';
 import './files/c.js';
 import { fileURLToPath } from 'url';
+import { readFile } from 'fs/promises';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -11,11 +12,17 @@ const random = Math.random();
 
 let unknownObject;
 
-if (random > 0.5) {
-    unknownObject = await import('./files/a.json', { assert: { type: 'json' } });
-} else {
-    unknownObject = await import('./files/b.json', { assert: { type: 'json' } });
+try {
+    const fileNameJSON = random > 0.5 ? './files/a.json' : './files/b.json';
+    unknownObject = JSON.parse(
+        await readFile(
+            new URL(fileNameJSON, import.meta.url)
+        )
+    );
+} catch (error) {
+    throw new Error('issue with JSON files');
 }
+
 
 console.log(`Release ${release()}`);
 console.log(`Version ${version()}`);
